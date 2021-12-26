@@ -1,4 +1,4 @@
-package com.cos.blog.controller;
+package com.cos.blog.controller.api;
 
 import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.RoleType;

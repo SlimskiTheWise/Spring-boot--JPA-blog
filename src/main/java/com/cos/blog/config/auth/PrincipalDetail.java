@@ -2,6 +2,7 @@ package com.cos.blog.config.auth;
 
 import com.cos.blog.model.User;
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Data
+@Getter
 public class PrincipalDetail implements UserDetails {
 
     private User user;
