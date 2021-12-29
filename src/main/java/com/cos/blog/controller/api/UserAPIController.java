@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
 
 @RestController
-public class UserAPIController {
+public class UserApiController {
 
     @Autowired
     private UserService userService;

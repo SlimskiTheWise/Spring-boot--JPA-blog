@@ -40,4 +40,5 @@ logging:
     com:
       cos:
         blog=DEBUG:
-
+cos:
+  key: cos1234

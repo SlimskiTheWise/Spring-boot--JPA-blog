@@ -37,8 +37,8 @@ public class BoardService {
     public Board getDetail(int id) {
         return boardRepository.findById(id)
                 .orElseThrow(()->{
-            return new IllegalArgumentException("글 상세보기 실패");
-        });
+                    return new IllegalArgumentException("글 상세보기 실패");
+                });
     }
 
     @Transactional

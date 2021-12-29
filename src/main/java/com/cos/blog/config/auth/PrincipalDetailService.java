@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 public class PrincipalDetailService implements UserDetailsService {
 
     @Autowired
-   private UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         User principal = userRepository.findByUsername(username)
-        .orElseThrow(()->{
-            return new UsernameNotFoundException("user cannot be found");
-        });
+                .orElseThrow(()->{
+                    return new UsernameNotFoundException("user cannot be found");
+                });
         return new PrincipalDetail(principal);
     }
 }

@@ -40,15 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/","/auth/**","/js/**","/user/**","/static/**","/css/**","/image/**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
+                .antMatchers("/","/auth/**","/js/**","/user/**","/static/**","/css/**","/img/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
-                    .formLogin()
-                    .loginPage("/auth/loginForm")
-                    .loginProcessingUrl("/auth/loginProc")
-                    .defaultSuccessUrl("/");
+                .formLogin()
+                .loginPage("/auth/loginForm")
+                .loginProcessingUrl("/auth/loginProc")
+                .defaultSuccessUrl("/");
 
     }
 }

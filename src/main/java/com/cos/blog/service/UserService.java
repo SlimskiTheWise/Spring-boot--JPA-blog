@@ -1,3 +1,5 @@
+
+
 package com.cos.blog.service;
 
 import com.cos.blog.model.RoleType;
@@ -37,10 +39,24 @@ public class UserService {
         User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
             return new IllegalArgumentException("id not found");
         });
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistance.setPassword(encPassword);
-        persistance.setEmail(user.getEmail());
 
+        if(persistance.getOauth()==null || persistance.getOauth().equals("")){
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistance.setPassword(encPassword);
+            persistance.setEmail(user.getEmail());
+        }
+
+
+
+    }
+
+    @Transactional(readOnly = true)
+    public User findMember(String username) {
+
+        User user = userRepository.findByUsername(username).orElseGet(()->{
+            return new User();
+        });
+            return user;
     }
 }

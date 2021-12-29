@@ -18,7 +18,7 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-//    @AuthenticationPrincipal PrincipalDetail principal
+    //    @AuthenticationPrincipal PrincipalDetail principal
     @GetMapping({"","/"})
     public String index(Model model, @PageableDefault(size=3,sort="id",direction=Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("boards",boardService.boardList(pageable));

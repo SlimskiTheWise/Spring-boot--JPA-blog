@@ -19,7 +19,9 @@
 <%--                <input name="remember" class="form-check-input" type="checkbox"> Remember me--%>
 <%--            </label>--%>
 <%--        </div>--%>
-        <button id="btn-login" class="btn btn-primary">Submit</button>
+        <button id="btn-login" class="btn btn-primary">Login</button>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=666d94a715b24dbf018665149f618e9f&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code
+"><img height="38px" src="/img/kakao_button.png"></a>
     </form>
 
 </div>
