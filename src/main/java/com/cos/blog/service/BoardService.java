@@ -1,9 +1,12 @@
 package com.cos.blog.service;
 
+import com.cos.blog.dto.ReplySaveRequestDto;
 import com.cos.blog.model.Board;
+import com.cos.blog.model.Reply;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.BoardRepository;
+import com.cos.blog.repository.ReplyRepository;
 import com.cos.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +21,13 @@ import java.util.List;
 public class BoardService {
 
     @Autowired
+    private ReplyRepository replyRepository;
+
+    @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public void write(Board board, User user){
@@ -54,5 +63,31 @@ public class BoardService {
                 });
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
+    }
+
+    @Transactional
+    public void writeComment(ReplySaveRequestDto replySaveRequestDto) {
+
+//        User user = userRepository.findById(replySaveRequestDto.getUserId())
+//                .orElseThrow(()->{
+//                    return new IllegalArgumentException();
+//                });
+//
+//        Board board = boardRepository.findById(replySaveRequestDto.getBoardId())
+//                        .orElseThrow(()->{
+//                            return new IllegalArgumentException("cannot be found");
+//                        });
+
+//        Reply reply = Reply.builder()
+//                        .user(user)
+//                                .board(board)
+//                                        .content(replySaveRequestDto.getContent())
+//                                                .build();
+
+       int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+    }
+
+    public void replyDelete(int replyId) {
+        replyRepository.deleteById(replyId);
     }
 }

@@ -25,8 +25,13 @@ let index ={
             contentType:"application/json;charset=utf-8",//body데이타가 어떤 타입인지 (MIME)
             dataType:"json"//요청을 서버로해서 응답이 왔을 때 기보적으로 모든 것이 문자 (생긴게 json이라면) 자바스크립트로 변경해준다.
         }).done(function(resp){
-            alert("회원가입이 완료되었습니다.");
-            location.href ="/";
+            if(resp.status===500){
+                alert("회원가입이 완료되었습니다.");
+            }else{
+                alert("회원가입이 완료되었습니다.");
+                location.href ="/";
+            }
+
         }).fail(function(error){
             alert(JSON.stringify(error));
         });//ajax 를 이용하여 3 개의 데이터를 json으로 변경하여 insert요청
